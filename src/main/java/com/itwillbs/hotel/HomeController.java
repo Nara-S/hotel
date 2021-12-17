@@ -101,6 +101,7 @@ public class HomeController {
 		return "sub/room_detail";
 	}
 	
+	
 	@RequestMapping(value = "/sub/reservation", method = RequestMethod.GET)
 	public String reservation() {
 		
