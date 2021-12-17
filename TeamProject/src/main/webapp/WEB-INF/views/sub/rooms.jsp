@@ -74,7 +74,7 @@
 						</figure>
 						<div class="media-body">
 							<h3 class="mt-0">
-								<a href="${pageContext.request.contextPath}/sub/room_detail.jsp">Deluxe Double</a>
+								<a href="${pageContext.request.contextPath}/sub/room_detail">Deluxe Double</a>
 							</h3>
 							<ul class="room-specs">
 								<li>
@@ -90,8 +90,9 @@
 								바다가 보이는 테라스에 모던한 디자인과 따뜻함이<br>
 								공존하는 인테리어 오륙도와 광안대교를 넘나드는<br>
 								아이티윌호텔만의 해안선 광경은 다른 어느곳에서도<br>
-								찾을 수 없는 감동을 드립니다.
+								찾을 수 없는 감동을 드립니다. 테스트
 							</p>
+							<p><a href="${pageContext.request.contextPath}/sub/room_detail" class="btn btn-primary btn-outline-primary btn-sm">VIEW MORE</a></p>
 						</div>
 					</div>
 				</div>
