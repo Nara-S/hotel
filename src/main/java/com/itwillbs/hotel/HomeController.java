@@ -94,6 +94,7 @@ public class HomeController {
 		return "admin/adminPage";
 	}
 	
+	
 	@RequestMapping(value = "/sub/room_detail", method = RequestMethod.GET)
 	public String room_detail() {
 		
