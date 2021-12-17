@@ -24,7 +24,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/insertPro", method = RequestMethod.POST)
 	public String insertPro(MemberDTO memberDTO, HttpServletRequest request) {
-		System.out.println("MemberController - insertPro11111111111");
+		System.out.println("MemberController - insertPro");
 		
 		memberDTO.setMember_birth(request.getParameter("year") + request.getParameter("month") + request.getParameter("day"));
 		memberDTO.setMember_mail(request.getParameter("email1") + "@" + request.getParameter("email2"));
