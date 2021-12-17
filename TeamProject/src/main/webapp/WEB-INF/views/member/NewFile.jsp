@@ -23,14 +23,66 @@
 
 <!-- script -->
   <script>
+  
+  var isPasswdCheck = false; 
+  
+  function checkPasswd(passwd) {
+		// 8 ~ 16자리 영문자, 숫자, 특수문자(!@#$%) 검증(주의! 패턴 작성 시 문자열 지정 금지)
+		var lengthRegex = /^[A-Za-z0-9!@#$%]{8,16}$/;
+		var engUpperRegex = /[A-Z]/;
+		var engLowerRegex = /[a-z]/;
+		var digitRegex = /[0-9]/;
+		var specRegex = /[!@#$%]/;
+		
+		// 자바스크립트를 통한 정규표현식 체크 문법 
+		// 정규표현식패턴객체.exec(검증할문자열) => boolean 타입 결과 리턴
+//		alert(typeof(lengthRegex));
+		
+		var element = document.getElementById("checkPasswdResult");
+		
+		if(lengthRegex.exec(passwd)) { // 전체 길이 판별 통과 시
+			// 대문자, 소문자, 숫자, 특수문자를 각각 판별하여
+			// 해당 항목이 존재할 경우 카운트 변수값을 1씩 증가시킨 후
+			// 4점 : "안전" - 초록색
+			// 3점 : "보통" - 주황색
+			// 2점 : "위험" - 빨간색
+			// 0점, 1점 : "사용불가" - 검정색
+			var count = 0; // 정수값을 저장하여 요소별 체크마다 1씩 증가시킴
+			
+			if(engUpperRegex.exec(passwd)) count++; // 영문 대문자 판별
+			if(engLowerRegex.exec(passwd)) count++; // 영문 소문자 판별
+			if(digitRegex.exec(passwd)) count++; // 숫자 판별
+			if(specRegex.exec(passwd)) count++; // 특수문자(!@#$%) 판별
+			
+			switch(count) { // count 변수 값에 따른 결과 출력
+				case 4 : 
+					element.innerHTML = '안전';
+					element.style.color = 'green';
+					isPasswdCheck = true; // 패스워드 양식 확인용 변수값을 true 로 변경
+					break;
+				case 3 : 
+					element.innerHTML = '보통';
+					element.style.color = 'orange';
+					isPasswdCheck = true;
+					break;
+				case 2 : 
+					element.innerHTML = '위험';
+					element.style.color = 'red';
+					isPasswdCheck = true;
+					break;
+				default :
+					element.innerHTML = '사용불가';
+					element.style.color = 'black';
+					isPasswdCheck = false;
+			}
+		} else {
+			element.innerHTML = "사용불가";
+			element.style.color = 'black';
+			isPasswdCheck = false;
+		}
+	}
+  
         function check_pw(){
- 
-            var pw = document.getElementById('pass').value;
- 
-            if(pw.length < 4 || pw.length>16){
-                window.alert('비밀번호는 4글자 이상, 16글자 이하만 이용 가능합니다.');
-                document.getElementById('pass').value='';
-            }
             if(document.getElementById('pass').value !='' && document.getElementById('passCh').value!=''){
                 if(document.getElementById('pass').value==document.getElementById('passCh').value){
                     document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
@@ -38,7 +90,7 @@
                 }
                 else{
                     document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-                    document.getElementById('pass2').value='';
+                    document.getElementById('passCh').value='';
                     document.getElementById('check').style.color='red';
                 }
             }
@@ -176,10 +228,12 @@ border: none;
      <input type="text" id="member_id" name="member_id" class="zipcode" placeholder="아이디를 입력해주세요" required="required">
    <input type="button" id="member_id_check" class="zip_search" value="ID 중복 체크">  
     <p>비밀번호<br>
-    <input type="password" id="pass" name="member_pass" onchange="check_pw()" placeholder="비밀번호를 입력해주세요" required>
+    <input type="password" id="pass" name="member_pass" onkeyup="checkPasswd(this.value)" placeholder="비밀번호를 입력해주세요" required>
+    <span id = "checkPasswdResult" ></span>
     </p>
     <p>비밀번호 확인<br>
     <input type="password" id="passCh" name="member_passCh" onchange="check_pw()" placeholder="비밀번호를 한 번 더 입력해주세요" required>
+    &nbsp;<span id = "check" ></span>
     </p>
     <p>이름<br>
     <input type="text" id="name" name="member_name" placeholder="이름을 입력해주세요" required>
