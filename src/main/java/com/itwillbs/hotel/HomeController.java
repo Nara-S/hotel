@@ -91,6 +91,7 @@ public class HomeController {
 	@RequestMapping(value = "/admin/adminPage", method = RequestMethod.GET)
 	public String adminPage() {
 		
+		
 		return "admin/adminPage";
 	}
 	
