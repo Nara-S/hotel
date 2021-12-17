@@ -44,63 +44,7 @@
             }
         }
     </script>
-  <script src="../script/jquery-3.6.0.js"></script>
- <script type="text/javascript">
-    $(document).ready(function(){
-       // class="dup" 클릭했을때
-       $('.zip_search').click(function(){
-//           alert("클릭");
-//              아이디 입력여부체크
-            if($('.id').val()==""){
-               alert("아이디 입력하세요");
-               $('.id').focus();
-               return;
-            }
-//              idCheck2.jsp에 갈때 id=값을 들고 가서 id중복체크 한후 출력(아이디중복, 아이디사용가능)
-//                                 출력결과를 받아서 id="dupdiv" 에 출력
-            $.ajax('idCheck2.jsp',{
-               data:{'id':$('.id').val()},
-               success:function(rdata){
-                  $('#dupdiv').html(rdata);
-               }
-            });
-       });
-       
-       //화면제어
-       // id="join" 폼태그 submit()
-       $('#join').submit(function(){
-//           alert("메시지");
-   // 비어있는 여부 id pass  name email   /   일치여부 pass2   email2  
-   //  class="id"    id="pass" id="name"  id="email" 
-//          if($('.id').val()==""){
-//             alert("아이디 입력하세요");
-//             $('.id').focus();
-//             return false;
-//          }
-//          if($('.pass').val()==""){
-//             alert("비밀번호를 입력하세요");
-//             $('.pass').focus();
-//             return false;
-//          }
-         
-//          if($('.pass').val()!= $('.pass2').val()){
-//             alert("비밀번호를 확인하세요");
-//             $('.pass2').focus();
-//             return false;
-//          }
-         
-//          if($('.email').val()==""){
-//             alert("에메일을 입력하세요");
-//             $('.email').focus();
-//             return false;
-//          }
-         
-   
-       });
-       
-       
-    });
- </script>
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.0.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
@@ -245,18 +189,18 @@ border: none;
     
    <select id="member_month" name="month" size="1">
       <option value="">월</option>
-      <option value="January">1</option>
-      <option value="Faburary">2</option>
-      <option value="March">3</option>
-      <option value="Aprill">4</option>
-      <option value="May">5</option>
-      <option value="June">6</option>
-      <option value="July">7</option>
-      <option value="August">8</option>
-      <option value="September">9</option>
-      <option value="October">10</option>
-      <option value="November">11</option>
-      <option value="December">12</option>
+      <option value="/ 1 /">1</option>
+      <option value="/ 2 /">2</option>
+      <option value="/ 3 /">3</option>
+      <option value="/ 4 /">4</option>
+      <option value="/ 5 /">5</option>
+      <option value="/ 6 /">6</option>
+      <option value="/ 7 /">7</option>
+      <option value="/ 8 /">8</option>
+      <option value="/ 9 /">9</option>
+      <option value="/ 10 /">10</option>
+      <option value="/ 11 /">11</option>
+      <option value="/ 12 /">12</option>
    </select>
    <input type="text" id="member_day" name="day" placeholder="일">
    </p>
